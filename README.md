@@ -1,4 +1,13 @@
-# Werkzeugverleih_Backend
+# Werkzeugverleih
+
+#### Disclaimer
+
+This project was originally a student project made by Jakob Stadler and
+Matthias Sagmeister and was hosted on an internal Gitlab instance,
+it has been cleared of any internal/copyrighted data and made
+publically available here. Some comments/documentation may not appy anymore.
+
+## About this project
 
 This repository houses the "backend" application for a self-service kiosk "web
 app" for a tool/machine storage rental system. It is designed to run locally
