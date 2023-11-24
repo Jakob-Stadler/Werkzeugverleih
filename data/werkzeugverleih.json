@@ -1,0 +1,41 @@
+{
+  "DEBUG": false,
+  "LOG_LEVEL": "debug",
+
+  "STREAM_FRAMERATE": 30,
+
+  "UI_DEFAULT_LANGUAGE": "de",
+
+  "NFC_DEBUG_DELAY": 2,
+
+  "KEEP_BACKUPS_FOR_X_DAYS": 2,
+  "KEEP_LOGS_FOR_X_DAYS": 14,
+  "INACTIVITY_LIMIT_DAYS": 180,
+
+  "FLASK_CONFIG_LOCATION": "data/flask.cfg",
+  "DATABASE_FILE_LOCATION": "data/werkzeugverleih.db",
+
+  "LOG_FILENAME_TEMPLATE": "log_${date}.log",
+  "LOG_FILEPATH_TEMPLATE": "data/logs/${filename}",
+  "BACKUP_FILENAME_TEMPLATE": "backup_${date}.db",
+  "BACKUP_FILEPATH_TEMPLATE": "data/db_backups/${filename}",
+
+  "CURRENT_USER_TEMPLATE": "${given_name} ${surname}, ${room}",
+
+  "DATE_FORMAT": "%Y-%m-%d",
+  "DATETIME_FORMAT": "%Y-%m-%d %H:%M:%S UTC",
+  "LOGGING_DATETIME_FORMAT": "%Y-%m-%d %H:%M:%S UTC",
+
+  "LOGGING_FORMAT": "%(asctime)s | %(levelname)s | %(message)s",
+
+  "NFC_CACHE_DURATION": 5,
+  "NFC_SCAN_TIMEOUT": 3,
+  "NFC_POLL_INTERVALL": 0.1,
+  "NFC_BRICKLET_UID": "PMv",
+  "BRICKD_HOST": "localhost",
+  "BRICKD_PORT": 4223,
+  "NFC_SEARCH_INTERVALL": 1,
+
+  "CAMERA_TIMEOUT": 10
+
+}

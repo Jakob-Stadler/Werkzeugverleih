@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+    'de': 'NFC Chip nicht erkannt',
+    'en': 'NFC Chip missing'
+  }|translate_ui
+}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="footer-index">
+    <a href="{{ url_for('page_checkin') }}">
+      <button type="button" class="button">
+        {{ {
+          'de': 'Zurückgeben',
+          'en': 'Check-in'
+        }|translate_ui
+      }}
+      </button>
+    </a>
+    <a href="{{ url_for('site_index') }}">
+      <button type="button" class="button">
+        {{ {
+          'de': 'Vorgang abbrechen',
+          'en': 'Cancel operation'
+        }|translate_ui
+      }}
+  </button>
+    </a>
+    <a href="{{ url_for('page_checkout') }}">
+      <button type="button" class="button">
+        {{ {
+          'de': 'Ausleihen',
+          'en': 'Check-out'
+        }|translate_ui
+      }}
+      </button>
+    </a>
+  </div>
+  <div>
+    <p class="nfc-error">
+      {{ {
+          'de': 'Es konnte kein NFC Tag erkannt werden! ',
+          'en': 'No NFC tag recognized!'
+        }|translate_ui
+      }}
+      <br>
+      {{ {
+          'de': 'Bitte Studentenausweis oder Mitarbeiterchip auf das Lesegerät auflegen und Button drücken',
+          'en': 'Please place your student id card or your employee chip on the reader and press a button'
+        }|translate_ui
+      }}
+      <br>
+      {{ {
+          'de': 'Die NFC-Erkennung wird im Cache zwischengespeichert. Dieser Cache wird aus Sicherheitsgründen beim Zurückgehen auf die Startseite wieder geleert.',
+          'en': 'The NFC identification will be cached. For security reasons, this cache will be emptied whenever you go back to the homepage.'
+        }|translate_ui
+      }}
+      <br>
+      {{ {
+          'de': 'Somit muss auf der Startseite immer der NFC-Chip aufgelegt werden!',
+          'en': 'Therefore, you will always have to re-scan your NFC tag on the homepage!'
+        }|translate_ui
+      }}
+    </p>
+    <div class="nfc-missing-images">
+      <img class="nfc-missing-img" src="{{ url_for('static', filename='images/nfc-example-student.jpg') }}">
+      <img class="nfc-missing-img" src="{{ url_for('static', filename='images/nfc-example-employee.jpg') }}">
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}

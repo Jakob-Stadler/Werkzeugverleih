@@ -1,0 +1,25 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - {{ {
+      'de': 'Werkzeugverleih',
+      'en': 'Rental system'
+    }|translate_ui
+  }}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<header class="base-header">
+  {% block header %}{% endblock %}
+  <div class="header-right">
+    {% if nfc_info %}
+    <p class="nfc-info">{{ {
+          'de': 'Aktueller Benutzer:',
+          'en': 'Current user:'
+        }|translate_ui
+      }}<br>{{ nfc_info }}</p>
+    {% endif %}
+    <a href="{{ url_for('admin_overview') }}">
+      <img class="header-img" src="{{ url_for('static', filename='images/logo.png') }}">
+    </a>
+  </div>
+</header>
+<section class="content">
+  {% block content %}{% endblock %}
+</section>

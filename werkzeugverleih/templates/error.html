@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+    'de': 'Fehler!',
+    'en': 'Error!'
+  }|translate_ui
+}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="footer-index">
+    <a href="{{ url_for('site_index') }}">
+      <button type="button" class="button">
+        {{ {
+          'de': 'Startseite',
+          'en': 'Homepage'
+        }|translate_ui
+      }}
+      </button>
+    </a>
+  </div>
+  <div>
+    <p class="error-message">
+      {% autoescape false %}
+      {{ error_message }}
+      {% endautoescape %}
+    </p>
+  </div>
+  <script>
+    var timeout = setTimeout(() => location.href = "/index", 10000);
+  </script>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}

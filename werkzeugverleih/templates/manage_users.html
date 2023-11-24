@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+    'de': 'Admin - Benutzerverwaltung',
+    'en': 'Admin - User management'
+  }|translate_ui
+}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="footer-index">
+    <a href="{{ url_for('site_index') }}">
+      <button type="button" class="button">
+        {{ {
+          'de': 'Startseite',
+          'en': 'Homepage'
+        }|translate_ui
+      }}
+      </button>
+    </a>
+    <a href="{{ url_for('admin_overview') }}">
+      <button type="button" class="button">
+        {{ {
+          'de': 'Admin-Menü',
+          'en': 'Admin menu'
+        }|translate_ui
+      }}
+      </button>
+    </a>
+  </div>
+  <div class="manage_users-content">
+    <table id="users-table" class="users-table">
+      <tr class='users-trh'>
+        <th class='users-th' onclick="sortTable(0, 'text', 'users-table')">
+          {{ {
+            'de': 'NFC ID',
+            'en': 'NFC ID'
+          }|translate_ui
+        }}
+        </th>
+        <th class='users-th' onclick="sortTable(1, 'text', 'users-table')">
+          {{ {
+            'de': 'Vorname',
+            'en': 'Given name'
+          }|translate_ui
+        }}
+        </th>
+        <th class='users-th' onclick="sortTable(2, 'text', 'users-table')">
+          {{ {
+            'de': 'Nachname',
+            'en': 'Surname'
+          }|translate_ui
+        }}
+        </th>
+        <th class='users-th' onclick="sortTable(3, 'text', 'users-table')">
+          {{ {
+            'de': 'Raum',
+            'en': 'Room'
+          }|translate_ui
+        }}
+        </th>
+        <th class='users-th' onclick="sortTable(4, 'number', 'users-table')">
+          {{ {
+            'de': 'Admin',
+            'en': 'Admin'
+          }|translate_ui
+        }}
+        </th>
+        <th class='users-th' onclick="sortTable(5, 'text', 'users-table')">
+          {{ {
+            'de': 'Registrierung',
+            'en': 'Registration'
+          }|translate_ui
+        }}
+        </th>
+        <th class='users-th' onclick="sortTable(6, 'text', 'users-table')">
+          {{ {
+            'de': 'Letzter Zugriff',
+            'en': 'Last access'
+          }|translate_ui
+        }}
+        </th>
+        <th class='users-th' onclick="sortTable(7, 'number', 'users-table')">
+          {{ {
+            'de': 'Ausleihen',
+            'en': 'Check-outs'
+          }|translate_ui
+        }}
+        </th>
+        <th class='users-th'>
+          {{ {
+            'de': 'Details',
+            'en': 'Details'
+          }|translate_ui
+        }}
+        </th>
+      </tr>
+      {% for user in userlist %}
+      <tr class='users-tr'>
+        <td class='users-td'>{{ user.get('nfc_id') }}</td>
+        <td class='users-td'>{{ user.get('given_name') }}</td>
+        <td class='users-td'>{{ user.get('surname') }}</td>
+        <td class='users-td'>{{ user.get('room') }}</td>
+        <td class='users-td'>{{ user.get('admin') }}</td>
+        <td class='users-td'>{{ user.get('date_registered')|ts2date }}</td>
+        <td class='users-td'>{{ user.get('last_access')|ts2date }}</td>
+        <td class='users-td'>{{ user.get('transactions') }}</td>
+        <td class='users-td'>
+          <a href="{{ url_for('admin_manage_user', nfc_id=user.get('nfc_id')) }}">
+            <button type="button" class="mini-button">
+              {{ {
+                'de': 'Details ansehen',
+                'en': 'View details'
+              }|translate_ui
+            }}
+            </button>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/tablesort.js') }}"></script>
+{% endblock %}

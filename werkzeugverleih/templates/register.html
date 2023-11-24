@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+    'de': 'Benutzerregistrierung',
+    'en': 'User registration'
+  }|translate_ui
+}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    {% if error_message %}
+    <p class="registration-error">{{ error_message }}</p>
+    {% endif %}
+    <p class="registration-paragraph">
+      {{ {
+          'de': 'Um die elektronische Ausleihverwaltung zu nutzen, ist eine vorherige Registrierung notwendig.',
+          'en': 'A prior user registration is required to use the electronic rental system.'
+        }|translate_ui
+      }}
+      <br>
+      {{ {
+          'de': 'Dabei werden folgende Daten gespeichert: Kennung des NFC-Chips, Vorname, Nachname, Raum, Zeitpunkt der Registrierung und Zeitpunkt des letzten Zugriffs auf das Gerät (NFC scannen).',
+          'en': 'The following data will be saved: NFC identification, given name, surname, room, time of registration and time of last access to the system (scanned NFC).'
+        }|translate_ui
+      }}
+      <br>
+      {{ {
+          'de': 'Diese Daten werden nur offline gespeichert und verlassen zu keiner Zeit das Gerät.',
+          'en': 'This data will be stored offline only and will never leave the device.'
+        }|translate_ui
+      }}
+      <br>
+      {{ {
+          'de': 'Der Benutzeraccount wird ab %s Tagen Inaktivität automatisch gelöscht. Inaktivität berechnet sich aus der Zeitspanne seit dem letzten Zuriff.' % INACTIVITY_LIMIT_DAYS,
+          'en': 'The registered user account will be deleted after %s days of inactivity. Inactivity is defined here as the timespan since last access to the system.' % INACTIVITY_LIMIT_DAYS
+        }|translate_ui
+      }}
+      <br>
+      {{ {
+          'de': 'Falls eine vorzeitige Löschung gewünscht ist, besteht jederzeit die Möglichkeit, diese bei den zuständigen Verantwortlichen des Werkzeugslagers einzufordern.',
+          'en': 'If you wish to delete your account earlier, you can always demand immediate removal by contacting one of the persons responsible for this storage room.'
+        }|translate_ui
+      }}
+      <br>
+      {{ {
+          'de': 'Benutzeraccounts können nicht gelöscht werden, wenn sie noch aktive Ausleihen im System haben!',
+          'en': 'User accounts can not be deleted if they still have active check-outs remaining!'
+        }|translate_ui
+      }}
+      <br>
+      {{ {
+          'de': 'Mit ausfüllen der Daten und dem Klicken auf "Benutzer registrieren" erklären Sie sich einverstanden mit Speicherung und Nutzung der oben angegeben Daten zum Betrieb des Systems.',
+          'en': 'By filling out the fields and clicking "Register user", you accept the storage and use of the data mentioned above for the purpose of system operation.'
+        }|translate_ui
+      }}
+    </p>
+    <div class="registration-input">
+      <label class="registration-labels" for="given_name">
+        {{ {
+          'de': 'Vorname',
+          'en': 'Given name'
+        }|translate_ui
+      }}
+      </label>
+      <input class="registration-inputs" name="given_name" id="given_name" required>
+      <label class="registration-labels" for="surname">
+        {{ {
+          'de': 'Nachname',
+          'en': 'Surname'
+        }|translate_ui
+      }}
+      </label>
+      <input class="registration-inputs" name="surname" id="surname" required>
+      <label class="registration-labels" for="room">
+        {{ {
+          'de': 'Raum',
+          'en': 'Room'
+        }|translate_ui
+      }}
+      </label>
+      <input class="registration-inputs" name="room" id="room" required>
+    </div>
+    <div class="footer-index">
+      <a href="{{ url_for('site_index') }}">
+        <button type="button" class="button">
+          {{ {
+            'de': 'Vorgang abbrechen',
+            'en': 'Cancel registration'
+          }|translate_ui
+        }}
+        </button>
+      </a>
+      <input type="submit" value="{{ {
+        'de': 'Benutzer registrieren',
+        'en': 'Register user'
+      }|translate_ui
+    }}" class="button">
+    </div>
+  </form>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}

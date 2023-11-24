@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+        'de': 'Admin Menü',
+        'en': 'Admin menu'
+      }|translate_ui
+    }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="footer-index">
+    <a href="{{ url_for('site_index') }}">
+      <button type="button" class="button">
+        {{ {
+            'de': 'Startseite',
+            'en': 'Homepage'
+          }|translate_ui
+        }}
+      </button>
+    </a>
+  </div>
+  <div class="admin-overview-content">
+    <a href="{{ url_for('admin_manage_users') }}" >
+      <button type="button" class="button admin-button">
+        {{ {
+            'de': 'Benutzer verwalten',
+            'en': 'Manage users'
+          }|translate_ui
+        }}
+      </button>
+    </a>
+    <a href="{{ url_for('admin_manage_transactions') }}">
+      <button type="button" class="button admin-button">
+        {{ {
+          'de': 'Ausleihen verwalten',
+          'en': 'Manage check-outs'
+        }|translate_ui
+      }}
+      </button>
+    </a>
+  </div>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}

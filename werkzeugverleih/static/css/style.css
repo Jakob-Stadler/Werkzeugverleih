@@ -1,0 +1,431 @@
+/* base/shared css */
+html {
+  font-family: sans-serif;
+}
+.base-header {
+  background-color: #888888;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.header-right {
+  display: flex;
+}
+.header-img {
+  height: 80px;
+}
+.nfc-info {
+  font-size: 20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  text-align: right;
+  max-width: 500px;
+  max-height: 50px;
+  line-height: 1.5em;
+}
+.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+  text-align: center;
+  color: initial;
+  font-size: 60px;
+  margin-right: 2%;
+  margin-left: 2%;
+  padding: 10px;
+  position: sticky;
+  top: 5px;
+}
+.mini-button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+  text-align: center;
+  color: initial;
+  font-size: 24px;
+  padding: 10px;
+  position: sticky;
+}
+.footer-index {
+  overflow: hidden;
+  background-color: #888888;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  padding: 14px 24px;
+  text-decoration: none;
+  margin-left: -10px;
+}
+
+
+/* index css */
+.index-paragraph {
+  font-size: 32px;
+  margin: 20px;
+  margin-right: 5%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+.left-aligned {
+  text-align: left;
+}
+.right-aligned {
+  text-align: right;
+}
+.gallery-img {
+  width: 576px;
+  padding: 5px;
+}
+.image-timestamp {
+  justify-content: center;
+  display: flex;
+  margin: 0px;
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 150px;
+}
+.select-language {
+  height: 100px;
+  width: 200px;
+}
+.footer-index-container {
+  display: flex;
+}
+.footer-index-image {
+  left: 0%;
+  width: 15%;
+}
+.footer-index-buttons {
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+  height: 100px;
+  padding: 14px 24px;
+  margin-left: 15%;
+}
+
+
+/* language css */
+.select-language-text {
+  font-weight: bold;
+  font-size: 36px;
+  justify-content: center;
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: inherit;
+}
+.select-language-images {
+  margin-top: 5%;
+  justify-content: center;
+  display: flex;
+}
+.select-language-img {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* registration css */
+.registration-input {
+  display: inline-grid;
+  width: 100%;
+  font-size: 24px;
+  justify-content: center;
+}
+.registration-labels {
+  margin-top: 32px;
+}
+.registration-inputs {
+  font-size: 32px;
+  width: 600px;
+}
+.registration-paragraph {
+  font-size: 32px;
+  margin: 20px;
+  margin-right: 5%;
+  margin-left: 5%;
+  line-height: 1.3;
+}
+.registration-error {
+  font-weight: bold;
+  color: red;
+  font-size: 36px;
+  justify-content: center;
+  display: flex;
+}
+
+
+/* nfc_missing css */
+.nfc-error {
+  font-weight: bold;
+  color: red;
+  font-size: 36px;
+  justify-content: center;
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: inherit;
+}
+.nfc-missing-images {
+  justify-content: center;
+  display: flex;
+}
+.nfc-missing-img {
+  margin: 2%;
+}
+
+
+/* checkout css */
+.checkout-container {
+  justify-content: center;
+  display: flex;
+}
+.checkout-frame {
+  width: 1280px;
+  height: 720px;
+  margin: 1%;
+}
+.checkout-img {
+  width: 1280px;
+  height: 720px;
+  margin: 1%;
+}
+.checkout-description {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+}
+.checkout-retry {
+  font-size: 24px;
+  color: rgb(77, 77, 77);
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+
+/* checkin css */
+.checkin-container {
+  margin-bottom: 150px;
+  padding-left: 0;
+  text-align: center;
+}
+.checkin-item {
+  display: inline-block;
+}
+.checkin-cb {
+  display: none;
+}
+.checkin-label {
+  border: 1px solid #fff;
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+.checkin-label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid rgb(0, 204, 255);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+.checkin-img {
+  width: 800px;
+  height: 450px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+:checked + .checkin-label {
+  border-color: #ddd;
+  background-color: rgb(0, 204, 255, .25);
+}
+:checked + .checkin-label:before {
+  content: "✓";
+  font-size: 22px;
+  background-color: rgb(0, 204, 255);
+  transform: scale(3);
+}
+.checkin-empty {
+  font-weight: bold;
+  font-size: 36px;
+  justify-content: center;
+  display: flex;
+}
+.checkin-timestamp {
+  justify-content: center;
+  display: flex;
+  margin: 0px;
+  font-style: italic;
+  font-size: 20px;
+}
+.checkin-successful {
+  font-weight: bold;
+  font-size: 36px;
+  justify-content: center;
+  display: flex;
+}
+.checkout-hidden {
+  display: none;
+}
+
+
+/* error css */
+.error-message {
+  font-weight: bold;
+  color: red;
+  font-size: 36px;
+  justify-content: center;
+  display: flex;
+}
+
+
+/* admin css */
+.admin-overview-content {
+  justify-content: center;
+  display: grid;
+  margin-top: 12%;
+}
+.admin-button {
+  margin: 20px;
+}
+.users-table {
+  margin-top: 1%;
+  border-spacing: 1px;
+  width: 98%;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+}
+.users-th {
+  cursor: pointer;
+  background-color: lightblue;
+}
+.users-th, .users-td {
+  text-align: center;
+  font-size: 24px;
+  padding: 24px;
+}
+.users-tr {
+  background-color: rgb(204, 205, 206);
+}
+.users-tr:nth-of-type(even) {
+  background-color: rgb(239, 242, 247);
+}
+.manage-user-input {
+  display: inline-grid;
+  width: 100%;
+  font-size: 24px;
+  justify-content: center;
+}
+.manage-user-labels {
+  margin-top: 20px;
+}
+.manage-user-inputs {
+  font-size: 24px;
+  width: 600px;
+}
+.manage-user-inputs.readonly {
+  color: rgb(80, 80, 80) ;
+  background-color: lightgray;
+}
+.manage-user-admin {
+  margin-top: 20px;
+  display: contents;
+}
+.manage-user-checkbox {
+  width: 50px;
+  height: 50px;
+}
+.manage-user-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+.manage-user-message {
+  font-weight: bold;
+  font-size: 36px;
+  justify-content: center;
+  display: flex;
+}
+.confirm-delete-message {
+  font-weight: bold;
+  font-size: 36px;
+  justify-content: center;
+  display: flex;
+}
+
+/* external css */
+/* based on https://www.w3schools.com/howto/howto_css_modal_images.asp */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 0px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+/* Add Animation - Zoom in the Modal */
+.modal-content {
+  animation-name: zoom;
+  animation-duration: 0.3s;
+}
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}

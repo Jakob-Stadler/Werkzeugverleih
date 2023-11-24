@@ -1,0 +1,14 @@
+[flake8]
+exclude = .git,.vscode,data,venv
+max-line-length = 80
+ignore =  E111, # 4 space tabs
+          E114, # indentation is not a multiple of four (comment)
+          E302, # expected 2 blank lines
+          E402, # module level import not at top of file
+          W504, # line break after binary operator
+          E201, # whitespace after '('
+          E121, # continuation line under-indented for hanging indent
+          E127, # continuation line over-indented for visual indent
+          E126, # continuation line over-indented for hanging indent
+          E241, # multiple spaces after ':'
+          E202, # whitespace before '}'

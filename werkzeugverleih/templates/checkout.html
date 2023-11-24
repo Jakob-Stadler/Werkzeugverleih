@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+        'de': 'Photo von auszuleihendem Werkzeug erstellen',
+        'en': 'Take photo of tool you want to check-out'
+      }|translate_ui
+    }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="footer-index">
+    <a href="{{ url_for('site_index') }}">
+      <button type="button" class="button">
+        {{ {
+              'de': 'Vorgang abbrechen',
+              'en': 'Cancel operation'
+            }|translate_ui
+          }}
+      </button>
+    </a>
+    <a href="{{ url_for('finish_checkout') }}">
+      <button type="button" class="button">
+        {{ {
+              'de': 'Photo aufnehmen und ausleihen',
+              'en': 'Take photo and check-out tool'
+            }|translate_ui
+          }}
+      </button>
+    </a>
+  </div>
+  <div class="checkout-container">
+      <img class="checkout-frame" src="{{ url_for('video_feed') }}">
+  </div>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}

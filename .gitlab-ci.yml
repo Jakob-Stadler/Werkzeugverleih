@@ -1,0 +1,28 @@
+image: "python:3.8"
+
+before_script:
+  - python3 --version
+  - ./install.sh
+  - source ./venv/bin/activate
+
+stages:
+  - Static Analysis
+  - Test Coverage
+
+flake8:
+  stage: Static Analysis
+  script:
+  - flake8
+
+pytest-cov:
+  stage: Test Coverage
+  script:
+  - ./test.sh
+  artifacts:
+    paths:
+    - htmlcov
+    - cov.xml
+    reports:
+      cobertura: cov.xml
+  coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
+  when: always

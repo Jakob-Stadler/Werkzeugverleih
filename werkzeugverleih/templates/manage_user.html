@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+        'de': 'Admin - Benutzerdaten ändern',
+        'en': 'Admin - change user data'
+      }|translate_ui
+    }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="footer-index">
+    <a href="{{ url_for('site_index') }}">
+      <button type="button" class="button">{{ {
+        'de': 'Startseite',
+        'en': 'Homepage'
+      }|translate_ui
+    }}</button>
+    </a>
+  </div>
+  <div class="manage_user-content">
+  </div>
+  <form method="POST">
+    {% if display_message %}
+    <p class="manage-user-message">{{ display_message }}</p>
+    {% endif %}
+    <div class="manage-user-input">
+      <label class="manage-user-labels readonly" for="nfc_id">
+        {{ {
+          'de': 'NFC ID',
+          'en': 'NFC ID'
+        }|translate_ui
+      }}
+      </label>
+      <input class="manage-user-inputs readonly" name="nfc_id" id="nfc_id" value="{{ user.get('nfc_id') }}" readonly>
+      <label class="manage-user-labels" for="given_name">
+        {{ {
+          'de': 'Vorname',
+          'en': 'Given name'
+        }|translate_ui
+      }}
+      </label>
+      <input class="manage-user-inputs" name="given_name" id="given_name" value="{{ user.get('given_name') }}" required>
+      <label class="manage-user-labels" for="surname">
+        {{ {
+          'de': 'Nachname',
+          'en': 'Surname'
+        }|translate_ui
+      }}
+      </label>
+      <input class="manage-user-inputs" name="surname" id="surname" value="{{ user.get('surname') }}" required>
+      <label class="manage-user-labels" for="room">
+        {{ {
+          'de': 'Raum',
+          'en': 'Room'
+        }|translate_ui
+      }}
+      </label>
+      <input class="manage-user-inputs" name="room" id="room" value="{{ user.get('room') }}" required>
+      <div class="manage-user-admin">
+        <label class="manage-user-labels" for="admin">
+          {{ {
+            'de': 'Admin-Rechte',
+            'en': 'Admin privileges'
+          }|translate_ui
+        }}
+        </label>
+        <input class="manage-user-checkbox" name="admin" id="admin" type="checkbox" {{ user.get('admin',0)|is_admin }}>
+      </div>
+    </div>
+    <div class="manage-user-buttons">
+      <a href="{{ url_for('admin_manage_transactions', nfc_id=user.get('nfc_id')) }}">
+        <button type="button" class="button">
+              {{ {
+              'de': 'Ausleihen verwalten',
+              'en': 'Manage check-outs'
+            }|translate_ui
+          }}
+        </button>
+      </a>
+      <button type="submit" class="button" formaction="{{ url_for('change_user') }}">
+        {{ {
+          'de': 'Daten ändern',
+          'en': 'Change data'
+        }|translate_ui
+      }}
+      </button>
+      <button type="submit" class="button" formaction="{{ url_for('delete_user') }}">
+        {{ {
+          'de': 'Benutzer löschen',
+          'en': 'Delete user'
+        }|translate_ui
+      }}
+      </button>
+    </div>
+    <div class="footer-index">
+      <a href="{{ url_for('site_index') }}">
+        <button type="button" class="button">
+          {{ {
+            'de': 'Startseite',
+            'en': 'Homepage'
+          }|translate_ui
+        }}
+        </button>
+      </a>
+      <a href="{{ url_for('admin_manage_users') }}">
+        <button type="button" class="button">
+          {{ {
+            'de': 'Zurück zu Benutzerliste',
+            'en': 'Back to user list'
+          }|translate_ui
+        }}
+        </button>
+      </a>
+    </div>
+  </form>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}

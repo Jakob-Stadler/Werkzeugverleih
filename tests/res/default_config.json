@@ -1,0 +1,28 @@
+{
+  "DEBUG" : true,
+  "LOG_LEVEL" : "debug",
+
+  "STREAM_FRAMERATE" : 4,
+
+  "UI_DEFAULT_LANGUAGE" : "de",
+
+  "KEEP_BACKUPS_FOR_X_DAYS" : 2,
+  "KEEP_LOGS_FOR_X_DAYS" : 14,
+  "INACTIVITY_LIMIT_DAYS" : 180,
+
+  "FLASK_CONFIG_LOCATION" : "data/flask.cfg",
+  "DATABASE_FILE_LOCATION" : "data/werkzeugverleih.db",
+
+  "LOG_FILENAME_TEMPLATE" : "log_${date}.log",
+  "LOG_FILEPATH_TEMPLATE" : "data/logs/${filename}",
+  "BACKUP_FILENAME_TEMPLATE" : "backup_${date}.db",
+  "BACKUP_FILEPATH_TEMPLATE" : "data/db_backups/${filename}",
+
+  "CURRENT_USER_TEMPLATE" : "${given_name} ${surname}, ${room}",
+
+  "DATE_FORMAT" : "%Y-%m-%d",
+  "DATETIME_FORMAT" : "%Y-%m-%d %H:%M:%S UTC",
+  "LOGGING_DATETIME_FORMAT" : "%Y-%m-%d %H:%M:%S UTC",
+
+  "LOGGING_FORMAT" : "%(asctime)s | %(levelname)s | %(message)s"
+}

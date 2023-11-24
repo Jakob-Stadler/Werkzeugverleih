@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+        'de': 'Sprache auswählen',
+        'en': 'Select language'
+      }|translate_ui
+    }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="footer-index">
+    <a href="{{ url_for('site_index') }}">
+      <button type="button" class="button">
+        {{ {
+              'de': 'Startseite',
+              'en': 'Homepage'
+            }|translate_ui
+          }}
+      </button>
+    </a>
+  </div>
+  <div>
+    <p class="select-language-text">
+      {{ {
+            'de': 'Bitte Sprache auswählen / Please select language:',
+            'en': 'Please select language:'
+          }|translate_ui
+        }}
+    </p>
+    <div class="select-language-images">
+      <a class="select-language-img" href="{{ url_for('language_selector', language='en') }}">
+        <img src="{{ url_for('static', filename='images/en.png') }}">
+      </a>
+      <a class="select-language-img" href="{{ url_for('language_selector', language='de') }}">
+        <img src="{{ url_for('static', filename='images/de.png') }}">
+      </a>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}

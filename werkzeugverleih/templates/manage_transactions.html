@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+    'de': 'Admin - Ausleihen verwalten',
+    'en': 'Admin - Checkout management'
+  }|translate_ui
+}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    {% if error_message %}
+      <p class="checkin-error">{{ error_message }}</p>
+    {% endif %}
+    <ul class="checkin-container">
+      {% if transaction_list %}
+        {% for transaction in transaction_list %}
+        <li class="checkin-item">
+          <input class="checkin-cb" name="checkin-ids" type="checkbox" value="{{ transaction.get('transaction_id') }}" id="cb_{{ transaction.get('transaction_id') }}" />
+          <label class="checkin-label" for="cb_{{ transaction.get('transaction_id') }}">
+            <img class="checkin-img" src="data:image/jpeg;base64,{{ transaction.get('image')|base64 }}" />
+            <p class="checkin-timestamp">
+                  {{ {
+                    'de': 'Ausgeliehen: %s %s' % (user_dict.get(transaction.get('nfc_id'))|format_user, transaction.get('transaction_time')|ts2date),
+                    'en': 'Checked out: %s %s' % (user_dict.get(transaction.get('nfc_id'))|format_user, transaction.get('transaction_time')|ts2date)
+                  }|translate_ui
+                }}
+            </p>
+          </label>
+        </li>
+        {% endfor %}
+      {% else %}
+        <p class="checkin-empty">{{ {
+              'de': 'Keine Werkzeuge zur Rückgabe vorhanden',
+              'en': 'Nothing to check-in'
+            }|translate_ui
+          }}
+          <br>
+            {{ {
+              'de': 'Sie werden automatisch zurück zum Admin-Menü weitergeleitet',
+              'en': 'You will be automatically redirected back to the admin menu.'
+            }|translate_ui
+          }}
+        </p>
+        <script>
+          var timeout = setTimeout(() => location.href = "/admin", 3000);
+        </script>
+      {% endif %}
+    </ul>
+    <div class="footer-index">
+      <a href="{{ url_for('site_index') }}">
+        <button type="button" class="button">
+          {{ {
+            'de': 'Startseite',
+            'en': 'Homepage'
+          }|translate_ui
+        }}
+        </button>
+      </a>
+      <a href="{{ url_for('admin_overview') }}">
+        <button type="button" class="button">
+          {{ {
+            'de': 'Admin-Menü',
+            'en': 'Admin menu'
+          }|translate_ui
+        }}
+        </button>
+      </a>
+      {% if transaction_list %}
+        <input type="submit" value="{{ {
+          'de': 'Auswahl zurückgeben',
+          'en': 'Return selected tools'
+        }|translate_ui
+      }}" class="button">
+      {% endif %}
+    </div>
+  </form>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}

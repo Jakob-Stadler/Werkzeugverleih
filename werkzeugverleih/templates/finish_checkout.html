@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+    'de': 'Erfolgreich ausgeliehen',
+    'en': 'Check-out successful'
+  }|translate_ui
+}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    <input name="transaction_id" type="hidden" value="{{ transaction.get('transaction_id') }}"/>
+    <input name="removal_key" type="hidden" value="{{ transaction.get('removal_key') }}"/>
+    <div class="footer-index">
+      <a href="{{ url_for('site_index') }}">
+        <button type="button" class="button">
+          {{ {
+            'de': 'Beenden',
+            'en': 'Finish check-out'
+          }|translate_ui
+        }}
+        </button>
+      </a>
+      <input type="submit" value="{{ {
+              'de': 'Photo ändern',
+              'en': 'Change photo'
+            }|translate_ui
+          }}" class="button">
+      <a href="{{ url_for('page_checkout') }}">
+        <button type="button" class="button">
+          {{ {
+            'de': 'Weitere ausleihen',
+            'en': 'Continue check-out'
+          }|translate_ui
+        }}
+        </button>
+      </a>
+    </div>
+    <div class="checkout-container">
+      <img class="checkout-img" src="data:image/jpeg;base64,{{ transaction.get('image')|base64 }}">
+    </div>
+    <span class="checkout-description">
+        {{ {
+          'de': 'Ausgeliehen von %s zum Zeitpunkt %s' % (user|format_user, transaction.get('transaction_time')|ts2date),
+          'en': 'Checked out by %s with timestamp %s' % (user|format_user, transaction.get('transaction_time')|ts2date)
+        }|translate_ui
+      }}
+    </span>
+    <span class="checkout-retry">
+        {{ {
+          'de': "Nicht zufrieden mit Photo? Einfach auf 'Photo ändern' drücken und diese Ausleihe rückgängig machen zum nochmal Probieren.",
+          'en': "Not satisfied with photo? Simply click on 'Change photo' and revert this transaction to try again."
+        }|translate_ui
+      }}
+
+    </span>
+  </form>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}

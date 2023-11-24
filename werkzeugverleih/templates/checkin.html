@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ {
+        'de': 'Werkzeuge zum Zurückgeben auswählen',
+        'en': 'Choose tools for check-in'
+      }|translate_ui
+    }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    {% if error_message %}
+      <p class="checkin-error">{{ error_message }}</p>
+    {% endif %}
+    <ul class="checkin-container">
+      {% if transaction_list %}
+        {% for transaction in transaction_list %}
+        <li class="checkin-item">
+          <input class="checkin-cb" name="checkin-ids" type="checkbox" value="{{ transaction.get('transaction_id') }}" id="cb_{{ transaction.get('transaction_id') }}" />
+          <label class="checkin-label" for="cb_{{ transaction.get('transaction_id') }}">
+            <img class="checkin-img" src="data:image/jpeg;base64,{{ transaction.get('image')|base64 }}" />
+            <p class="checkin-timestamp">{{ {
+              'de': 'Ausgeliehen:',
+              'en': 'Checked out:'
+            }|translate_ui
+          }} {{ transaction.get('transaction_time')|ts2date }}</p>
+          </label>
+        </li>
+        {% endfor %}
+      {% else %}
+        <p class="checkin-empty">
+          {{ {
+                'de': 'Keine Werkzeuge zur Rückgabe vorhanden.',
+                'en': 'Nothing to check-in.'
+              }|translate_ui
+            }}<br>
+          {{ {
+                'de': 'Sie werden automatisch zurück zur Startseite weitergeleitet.',
+                'en': 'You will be redirected back to the homepage automatically.'
+              }|translate_ui
+            }}
+        </p>
+        <script>
+          var timeout = setTimeout(() => location.href = "/index", 3000);
+        </script>
+      {% endif %}
+    </ul>
+    <div class="footer-index">
+      <a href="{{ url_for('site_index') }}">
+        <button type="button" class="button">
+          {{ {
+                'de': 'Abbrechen',
+                'en': 'Cancel'
+              }|translate_ui
+            }}
+        </button>
+      </a>
+      {% if transaction_list %}
+        <input type="submit" value="{{ {
+              'de': 'Ausgewählte zurückgeben',
+              'en': 'Return selected tools'
+            }|translate_ui
+          }}" class="button">
+      {% endif %}
+    </div>
+  </form>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+{% endblock %}
